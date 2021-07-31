@@ -14,6 +14,7 @@ let App = FunctionComponent.Of<unit> (fun _ ->
   Html.div [
     prop.children [
       Html.text "Hello from Fable!"
+      Html.text "Here are some changes to the App.fs file"
     ]
   ]
 )
