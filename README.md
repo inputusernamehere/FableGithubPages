@@ -1,5 +1,9 @@
 
-# Automatically publish a Fable application to Github Pages
+# Publish a Fable application to Github Pages
+
+This repo is meant to show you an example of how you can set up automatic publishing of fable applications to Github Pages every time the application changes.
+
+Take a look at the result: https://inputusernamehere.github.io/FableGithubPages/
 
 ## 1. Create a new fable project
 Using this template: https://github.com/fable-compiler/fable-templates,
@@ -37,5 +41,3 @@ This action will trigger every time there is a push to the master branch.
 ## 6. Make changes to your Fable application
 Edit App.fs, commit your changes and push them.
 After a short while you should now be able to see the changes you have made on your Github Pages page.
-
-Take a look at the result: https://inputusernamehere.github.io/FableGithubPages/
