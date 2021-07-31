@@ -13,8 +13,8 @@ open Fss
 let App = FunctionComponent.Of<unit> (fun _ ->
   Html.div [
     prop.children [
-      Html.text "Hello from Fable!"
-      Html.text "Here are some changes to the App.fs file"
+      Html.div "Hello from Fable!"
+      Html.div "This page is automatically rebuilt every time changes are pushed to master"
     ]
   ]
 )

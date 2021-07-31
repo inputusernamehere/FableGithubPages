@@ -1,37 +1,41 @@
-# Fable Minimal App
 
-This is a small Fable app project so you can easily get started and add your own code progressively. For more comprehensive templates [check this page](https://fable.io/docs/2-steps/your-first-fable-project.html).
+# Automatically publish a Fable application to Github Pages
 
-## Requirements
+## 1. Create a new fable project
+Using this template: https://github.com/fable-compiler/fable-templates,
 
-* [dotnet SDK](https://www.microsoft.com/net/download/core) 5.0 or higher
-* [node.js](https://nodejs.org)
-* An F# editor like Visual Studio, Visual Studio Code with [Ionide](http://ionide.io/) or [JetBrains Rider](https://www.jetbrains.com/rider/)
+In an empty folder, run these commands:
+```
+dotnet new -i Fable.Template
+dotnet new fable -n <name-of-your-project>
+```
 
-## Building and running the app
+## 2. Create a new git repository and upload it to github
 
-* Install dependencies: `npm install`
-* Start the compiler in watch mode and a development server: `npm start`
-* After the first compilation is finished, in your browser open: http://localhost:8080/
+## 3. Enable Github Pages
+Navigate to your repository on github.
+Under Settings -> Pages, select the default branch and the folder `/docs`.
+Github currently only allows us to publish from `/` or `/docs`, so I chose `/docs` to keep the files more organized.
 
-Any modification you do to the F# code will be reflected in the web page after saving.
+## 4. Prepare the repository for Github Pages
+Rename the `/public` folder to `/docs`.
+Change the mentions of `/public` to `/docs` in webpack.config.js.
+In `package.json` add the following script: `"build": "dotnet fable src && webpack`.
+The scripts section of `package.json` should now look like this:
+```
+  "scripts": {
+    "postinstall": "dotnet tool restore",
+    "start": "dotnet fable watch src --run webpack-dev-server",
+    "build": "dotnet fable src && webpack"
+  },
+```
 
-> Note: check the "scripts" section in `package.json` to see the commands triggered by the steps above.
+## 5. Add a Github Action to build on push to the master branch
+For an example action, see `.github/workflows/build_and_publish.yml`.
+This action will trigger every time there is a push to the master branch.
 
-## Project structure
+## 6. Make changes to your Fable application
+Edit App.fs, commit your changes and push them.
+After a short while you should now be able to see the changes you have made on your Github Pages page.
 
-### npm
-
-JS dependencies are declared in `package.json`, while `package-lock.json` is a lock file automatically generated.
-
-### Webpack
-
-[Webpack](https://webpack.js.org) is a JS bundler with extensions, like a static dev server that enables hot reloading on code changes. Configuration for Webpack is defined in the `webpack.config.js` file. Note this sample only includes basic Webpack configuration for development mode, if you want to see a more comprehensive configuration check the [Fable webpack-config-template](https://github.com/fable-compiler/webpack-config-template/blob/master/webpack.config.js).
-
-### F#
-
-The sample only contains two F# files: the project (.fsproj) and a source file (.fs) in the `src` folder.
-
-### Web assets
-
-The `index.html` file and other assets like an icon can be found in the `docs` folder.
+Take a look at the result: https://inputusernamehere.github.io/FableGithubPages/
