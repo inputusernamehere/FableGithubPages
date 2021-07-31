@@ -10,13 +10,17 @@ open Feliz
 open Feliz.Router
 open Fss
 
-// Mutable variable to count the number of times we clicked the button
-let mutable count = 0
+let App = FunctionComponent.Of<unit> (fun _ ->
+  Html.div [
+    prop.children [
+      Html.text "Hello from Fable!"
+    ]
+  ]
+)
 
-// Get a reference to our button and cast the Element to an HTMLButtonElement
-let myButton = document.querySelector(".my-button") :?> Browser.Types.HTMLButtonElement
+let render() =
+    ReactDom.render(
+        App (),
+        document.getElementById("ReactEntryPoint"))
 
-// Register our listener
-myButton.onclick <- fun _ ->
-    count <- count + 1
-    myButton.innerText <- sprintf "You clicked: %i time(s)" count
+render()
