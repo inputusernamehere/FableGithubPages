@@ -34,4 +34,4 @@ The sample only contains two F# files: the project (.fsproj) and a source file (
 
 ### Web assets
 
-The `index.html` file and other assets like an icon can be found in the `public` folder.
+The `index.html` file and other assets like an icon can be found in the `docs` folder.
