@@ -24,9 +24,6 @@ let client =
   testList "Client tests" [
     testCase "Mocha works" <| fun () ->
       Expect.equal 1 1 "Mocha works"
-
-    testCase "Failing test" <| fun () ->
-      Expect.equal 1 2 "This will fail"
   ]
 
 let all = 

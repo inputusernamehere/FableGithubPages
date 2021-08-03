@@ -213,3 +213,26 @@ Before the `Build` step we want to add another `Run tests` step. For the complet
 
 ## 5. Add more tests
 You can now add tests to your heart's content.
+
+You can see the output of your tests in Github's `Actions` panel, under the step `Run tests`. If one of your tests fail, a new version of your website will not be published to Github Pages. Instead you will see an output like this:
+
+```
+ ========== SUMMARY ==========
+
+Total test count 5
+Passed tests 4
+Failed tests 1
+Skipped tests 0
+
+========== TESTS ==========
+
+√ Arithmetic tests / plus works
+√ Arithmetic tests / Test for falsehood
+√ Arithmetic tests / Test async code
+√ Client tests / Mocha works
+X Client tests / Failing test
+
+Stopping web server...
+Exit code: 1
+Error: Process completed with exit code 1.
+```
