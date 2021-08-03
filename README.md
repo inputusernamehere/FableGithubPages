@@ -26,9 +26,9 @@ obj/
 ```
 
 ## 3. Enable Github Pages
-Navigate to your repository on github.
+Navigate to your repository on Github.
 Under Settings -> Pages, select the default branch and the folder `/docs`.
-Github currently only allows us to publish from `/` or `/docs`, so I chose `/docs` to keep the files more organized.
+Github currently only allows us to publish from `/` or `/docs`, so I chose `/docs` to keep the files more organized. Another alternative is to create a separate branch that only contains the final output that should be served on Github Pages which is probably a better option overall.
 
 ## 4. Prepare the repository for Github Pages
 Rename the `/public` folder to `/docs`.
