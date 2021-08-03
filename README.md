@@ -126,10 +126,17 @@ Again, follow the instructions in Fable.Mocha's documentation under the section 
 
 The Fable.Mocha documentation has a diagram of the folder structure that starts with `{repo}` as the root. Our root is going to be our `tests` folder.
 
+We are going to add the same `postinstall` script into `.tests/package.json` that we have in `./package.json` to automatically run the command `dotnet tool restore` after `npm install`:
+```
+    "postinstall": "dotnet tool restore",
+```
+
 We are also going to change the command for running the headless tests slightly, so that it compiles our project with fable before running the tests. We could have also told our CI to compile first before running the test, but I will do it like this so that you can't accidentally run the tests without compiling a new version first. The npm script to run your tests will be this instead:
 ```
     "test-headless": "dotnet fable Client.Tests && webpack && dotnet run --project ./HeadlessTests/HeadlessTests.fsproj"
 ```
+
+To see the final version of `package.json` with these modified scripts, take a look at `./tests/package.json` in this repo.
 
 Again I will duplicate the instructions here for posterity and make the above-mentioned adjustments.
 
