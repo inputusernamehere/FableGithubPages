@@ -189,3 +189,27 @@ You can also add a npm build script to run the headless tests after compiling th
 
 Remember to gitignore the directory of the downloaded chromium add .local-chromium to your gitignore file.
 ```
+
+## 4. Add the tests to your github actions workflow
+Before the `Build` step we want to add another `Run tests` step. For the complete workflow see the file `./github/workflows/build_and_publish.yml` 
+
+```
+    - name: Run tests
+      run: |
+        cd ./tests
+        npm install
+        npm run test-headless
+        cd ..
+
+    - name: Build
+      run: |
+        npm install
+        npm run build
+        git add .
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "CI: Automated build" -a | exit 0
+```
+
+## 5. Add more tests
+You can now add tests to your heart's content.
