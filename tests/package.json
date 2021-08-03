@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "postinstall": "dotnet tool restore",
     "start": "webpack-dev-server",
     "build-for-browser": "webpack",
     "test-headless": "dotnet fable Client.Tests && webpack && dotnet run --project ./HeadlessTests/HeadlessTests.fsproj"
