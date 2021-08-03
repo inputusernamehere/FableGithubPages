@@ -23,6 +23,7 @@ jobs:
     - name: Run tests
       run: |
         cd ./tests
+        dotnet tool restore
         npm run test-headless
         cd ..
 
